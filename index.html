@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic List Rendering</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Your ItemList component code will go here
+
+        function Gallery({ children }) {
+            const gridItemStyle = {
+                backgroundColor: "#ccc",
+                padding: "20px",
+                textAlign: "center",
+
+            };
+            return (
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(3, 1fr)",
+                        gridGap: "10px",
+                    }}
+                >
+                    <div style={gridItemStyle}>{children}</div>
+
+                </div>
+            );
+        }
+        function Image({ src }) {
+            return <img src={src} />
+
+        }
+        function App() {
+            return (
+                <Gallery>
+                    <Image src="images\image1.jpg" />
+                    <Image src="images\image3.jpg" />
+                    <Image src="images\image1.jpg" />
+                    <Image src="images\image3.jpg" />
+                </Gallery>
+            )
+        }
+        let root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />)
+    </script>
+</body>
+
+</html>
